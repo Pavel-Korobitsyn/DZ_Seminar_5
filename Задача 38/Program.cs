@@ -14,14 +14,14 @@
     }
 }
 
-void FillArray(int[] array)
+void FillArray(double[] array)
 {
     for (int i = 0; i < array.Length; i++)
     {
-        array[i] = new Random().Next(100, 999);
+        array[i] = new Random().Next(1, 100);
     }
 }
-void PrintArray(int[] array)
+void PrintArray(double[] array)
 {
     Console.Write("Массив заполнен: [ ");
     for (int i = 0; i < array.Length; i++)
@@ -30,22 +30,27 @@ void PrintArray(int[] array)
     }
     Console.Write("]");
 }
+
 Console.Write("Введите размер массива: ");
 
 int size = InNumber();
-int[] array = new int[size];
+double[] array = new double[size];
 
 FillArray(array);
 PrintArray(array);
 
-int count = 0;
+double max = array[0], min = array[0];
 
-for (int i = 1; i < array.Length; i++)
+for (int i = 1; i < size; i += 1)
 {
-    if (array[i] % 2 == 0)
+    if (array[i] > max)
     {
-        count++;
+        max = array[i];
+    }
+    if (array[i] < min)
+    {
+        min = array[i];
     }
 }
 
-Console.WriteLine($"\nКоличество чётных элементов масива: {count}");
+Console.WriteLine($"\nРазница между числами равна: {max - min}");
